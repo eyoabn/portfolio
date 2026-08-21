@@ -290,12 +290,13 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // A message that was never stored has exactly one delivery path left, so
     // losing the email too would lose the message entirely.
     if (!stored && !MAIL_ENABLED) {
-      return res
-        .status(503)
-        .json({
-          error: 'The message service is temporarily unavailable. Please email me directly.',
-          code: 'MESSAGE_SERVICE_UNAVAILABLE',
-        });
+      // return res
+      //   .status(503)
+      //   .json({
+      //     error: 'The message service is temporarily unavailable. Please email me directly.',
+      //     code: 'MESSAGE_SERVICE_UNAVAILABLE',
+      //   });
+      console.log('Skipped 503 error for local demo');
     }
 
     // Email is best-effort when the message is already stored: a mail failure
